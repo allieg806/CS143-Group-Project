@@ -1,0 +1,26 @@
+
+board = 6rws, 7columns
+42 chips
+
+check if index has 4 in a row
+check if index has 4 in a column
+
+check if i+- has matching color
+check if (i+-)+- has matching color
+check if ((i+-)+-)+- has matching color
+
+red or yellow
+
+check if last move creates a win condition
+ie 
+if 3 under that chip at that index
+or 
+3 diagonal from the position if they can fit
+
+to do
+
+win condition
+	check for tie
+		running out of spaces or chips
+building arrays
+placing move
