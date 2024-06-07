@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class JodiAttempt {
 
+    private int count = 0;
+
     // Class that builds the game board
     private ArrayList<ArrayList<Integer>> board;
     private int rows;
@@ -81,17 +83,20 @@ public class JodiAttempt {
 
                 // P1 won, print winner & terminate game
                 System.out.println("Player 1 wins!");
+                connectFourBoard.printBoard();
                 System.exit(0);
             }
             else if(turn == 2 && connectFourBoard.winnerCheck()) {
 
                 // P2 won, print winner & terminate game
                 System.out.println("Player 2 wins!");
+                connectFourBoard.printBoard();
                 System.exit(0);
             }
             else if (connectFourBoard.tieCheck()) {
                 // If the tieCheck returns true, we have a tie, end game with no winner
                 System.out.println("Somehow, neither player managed to win. Tie game!");
+                connectFourBoard.printBoard();
                 System.exit(0);
             }
 
@@ -217,9 +222,14 @@ public class JodiAttempt {
 
     private boolean tieCheck() {
 
-        // TODO : Implement this method
 
-        return false; // Placeholder
+        if(count == 42) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
 
 
@@ -227,14 +237,53 @@ public class JodiAttempt {
     // returns false and doesn't modify the game board
     private boolean move(int player, int position) {
 
-        position--; // Translate user input that corresponds to our columns [1-7] to correct array index selection [0-6]
 
-        // TODO: Implement the rest of this method
+        int n = 5;
+        int p = position-1;
+
+        if(board.get(0).get(p) !=0)
+        {
+            System.out.println("That column is full!");
+            return false;
+        }
+        if(player ==1)
+        {
+
+            while(n>=0)
+            {
+                if(board.get(n).get(p) !=0)
+                {
+                    n--;
+                }
+                else
+                {
+                    board.get(n).set(p,1);
+                    count ++;
+                    return true;
+                }
+
+            }
+        }
+        if(player ==2)
+        {
+            while(n>=0)
+            {
+                if(board.get(n).get(p) !=0)
+                {
+                    n--;
+                }
+                else
+                {
+                    board.get(n).set(p,2);
+                    count ++;
+                    return true;
+                }
+
+            }
+        }
 
 
-
-
-        return false; // Placeholder
+        return false;
 
     }
 
